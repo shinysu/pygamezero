@@ -59,10 +59,6 @@ def bounce():
 def check_paddle_miss():
     global missed, miss_count
     if ball.bottom > paddle.top + abs(ball_velocity_y):
-        print("here")
-        print(ball.bottom)
-        print(paddle.top)
-        print(paddle.top + ball_velocity_y + 1)
         missed = True
         miss_count = miss_count + 1
         check_game_over()
