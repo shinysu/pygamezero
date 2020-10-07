@@ -3,8 +3,8 @@ from random import randint
 
 ball = Actor('ball')
 paddle = Actor('paddle')
-ball_velocity_x = 2
-ball_velocity_y = 2
+ball_velocity_x = 5
+ball_velocity_y = 5
 WHITE = (255, 255, 255)
 is_game_over = False
 score = 0
@@ -58,7 +58,11 @@ def bounce():
 
 def check_paddle_miss():
     global missed, miss_count
-    if ball.bottom > paddle.top + ball_velocity_y + 1:
+    if ball.bottom > paddle.top + abs(ball_velocity_y):
+        print("here")
+        print(ball.bottom)
+        print(paddle.top)
+        print(paddle.top + ball_velocity_y + 1)
         missed = True
         miss_count = miss_count + 1
         check_game_over()
@@ -93,7 +97,7 @@ def reset():
 def position_objects():
     ball.x = randint(100, WIDTH-100)
     ball.y = 100
-    paddle.pos = 100, 560
+    paddle.pos = 100, 580
 
 def draw_score():
     screen.draw.text("Score: " + str(score), (10, 10), fontsize=25, color=WHITE)
